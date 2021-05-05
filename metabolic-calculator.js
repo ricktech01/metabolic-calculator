@@ -15,6 +15,7 @@ var edE = document.getElementById("endDate");
 var crE = document.getElementById("calculatedRate");
 
 var rE = document.getElementById("rate");
+var ruE = document.getElementById("ru");
 
 var calsE = document.getElementById("cals");
 
@@ -78,7 +79,7 @@ function calcByGoal(){
 	}
 	crE.innerHTML = cr.toFixed(2) + " lbs/week";
 	if (gw.value == '1')
-		crE.innerHTML = (cr / (2.20462)) + "kg/week";
+		crE.innerHTML = (cr / 2.20462) + "kg/week";
 
 	cals = ((bmr + bmr2)/2 + cr*500).toFixed(0);
 	if (isNaN(cals)){
@@ -95,6 +96,8 @@ function calcByGoal(){
 function calcByRate(){
 	calcBMR();
 	cals = (bmr + rE.value*500).toFixed(0);
+	if (ruE.value == '1')
+		cals = (bmr + rE.value*500/2.20462).toFixed(0);
 	if (isNaN(cals)){
 		alert("Please fill all required fields!"); 
 		return;
