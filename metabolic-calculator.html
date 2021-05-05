@@ -50,14 +50,14 @@
 			<td><input type="text" id="height1" name="height1" style="width:35px;">
 			<input type="text" id="height2" name="height2" style="width:23px;">
 			<select name="hu" id="hu" onchange="updateHeight()">
-	  		<option value="0">ft/in</option>
+	  		<option value="0">ft in</option>
 	  		<option value="1">cm</option>
 			</select></td>
 		</tr>
 	</table>
 	<input type="button" value="Calculate BMR" onclick="calcBMR()">
 	<span>BMR: </span>
-	<span id="bmr">XXXX</span> Calories/Day</span><br>
+	<span id="bmr"></span></span><br>
 	<br>
 	<table>
 		<tr>
@@ -83,18 +83,31 @@
 						<td class="ra"><label for="endDate">End Date:</label></td>
 						<td><input type="date" id="endDate" name="endDate" style="width:170px;"></td>
 					</tr>
+					<tr>
+						<td><span>Rate:</span></td>
+						<td><span id="calculatedRate"></span></td>
+					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
 						<td><label for="rate">Rate:</label></td>
-						<td><input type="text" id="rate" name="rate"></td>
+						<td><input type="text" id="rate" name="rate" style="width:35px;">
+							<select name="ru" id="ru">
+	  						<option value="0">lb</option>
+	  						<option value="1">kg</option>
+							</select><span> per week</span></td>
 					</tr>
 				</table>
 			</td>
-		</tr>	
-	</table>
+		</tr>
+		<tr>
+			<td class="c"><input type="button" value="Calculate Calories" onclick="calcByGoal()"></td>
+			<td class="c"><input type="button" value="Calculate Calories" onclick="calcByRate()"></td>
+		</tr>
+	</table><br>
+	<span>Calories to reach goal:<span id="cals"></span></span><br>
 	
 	
 	
