@@ -60,6 +60,11 @@ function calcByGoal(){
 	var ed = new Date(edE.value);
 	var dt = (ed - sd)/604800000 ;
 	
+	if (ed < sd){
+		alert("Please enter a valid date range!");
+		return;
+	}
+
 	var dw = gw - w;
 	cr = dw/dt;
 
@@ -67,24 +72,33 @@ function calcByGoal(){
 	if (sexE.value == '1'){
 		bmr2 = 447.593 + (9.247* gw/2.20462) + (3.098*h) - (4.330*a);
 	}
-
+	if (isNaN(cr)){
+		alert("Please fill all required fields!"); 
+		return;
+	}
 	crE.innerHTML = cr.toFixed(2) + " lbs/week";
 	if (gw.value == '1')
 		crE.innerHTML = (cr / (2.20462)) + "kg/week";
 
 	cals = ((bmr + bmr2)/2 + cr*500).toFixed(0);
-	if (isNaN(cals))
+	if (isNaN(cals)){
 		alert("Please fill all required fields!"); 
-	else {
+		return;
+	}
+	
 	if (cals < 0)
 		alert("You will have to consume less than 0 net calories to achive your goal.")
 	calsE.innerHTML = cals + " calories per day";
-	}
+	
 
 }
 function calcByRate(){
 	calcBMR();
 	cals = (bmr + rE.value*500).toFixed(0);
+	if (isNaN(cals)){
+		alert("Please fill all required fields!"); 
+		return;
+	}
 	if (cals < 0)
 		alert("You will have to consume less than 0 net calories to achive your goal.")
 	calsE.innerHTML = cals + " calories per day";
