@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css"></style>
+</head>
+<body>
+	<label for="sex">Sex:</label>
+	<select name="sex" id="sex">
+	  	<option value="0">Male</option>
+	  	<option value="1">Female</option>
+	</select><br>
+	<label for="age">Age:</label>
+	<input type="text" id="age" name="age"><br>
+	<label for="weight">Current Weight:</label>
+	<input type="text" id="weight" name="weight">
+	<select name="wu" id="wu">
+	  	<option value="0">lb</option>
+	  	<option value="1">kg</option>
+	</select><br>
+	<label for="height1">Current Height:</label>
+	<input type="text" id="height1" name="height1">
+	<input type="text" id="height2" name="height2">
+	<select name="hu" id="hu" onchange="updateHeight()">
+	  	<option value="0">in</option>
+	  	<option value="1">cm</option>
+	</select><br>
+	<input type="button" value="Calculate" onclick="calculate()"><br>
+	<span>BMR (calories to maintain weight): <span id="bmr"></span> Calories/Day</span>
+
+	<script type="text/javascript" src="metabolic-calculator.js"></script>
+</body>
+</html>
