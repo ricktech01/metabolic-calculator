@@ -3,13 +3,13 @@
 <head>
 	<style type="text/css">
 		body{
-			font-size: 20px;
+			font-size: 25px;
 		}
 		select {
-			font-size: 18px;
+			font-size: 24px;
 		}
 		input {
-			font-size: 20px;
+			font-size: 25px;
 		}
 		.ra {
 			float:right;
@@ -20,14 +20,25 @@
 			padding-right: 10%;
 		}
 		.miniTable{
-			width:400px;
+			width:50%;
+		}
+		tr {
+		    margin-bottom: 20px;
+		}
+		.box1 {
+		    width: 30px;
+		}
+		.box2 {
+		    width: 45px;
+		}
+		.dateBox {
+		    width: 210px;
 		}
 	</style>
 </head>
 <body>
 	<h3>Metabolic Weight Gain/Loss Calculator:</h3>
-	<p>Use this tool to calculate the calories you need to consume to gain or lose weight.</p>
-	<p>First step is to calculate your BMR (Daily calories to maintain weight). Then calculate your daily calories based on weigh goal or desired gain/loss rate.
+	<span>Use this tool to calculate the calories you need to consume to gain or lose weight.<br>First step is to calculate your BMR (Daily calories to maintain weight). Then calculate your daily calories based on weigh goal or desired gain/loss rate.</span><br><br>
 	<table>
 		<tr>
 			<td class="ra"><label for="sex">Sex:</label></td>
@@ -38,11 +49,11 @@
 		</tr>
 		<tr>
 			<td class="ra"><label for="age">Age:</label></td>
-			<td><input type="text" id="age" name="age" style="width:23px;"></td>
+			<td><input type="text" id="age" name="age" class="box1"></td>
 		</tr>
 		<tr>
 			<td class="ra"><label for="weight">Current Weight:</label></td>
-			<td><input type="text" id="weight" name="weight" style="width:35px;">
+			<td><input type="text" id="weight" name="weight" class="box2">
 			<select name="wu" id="wu">
 	  		<option value="0">lb</option>
 	  		<option value="1">kg</option>
@@ -50,8 +61,8 @@
 		</tr>
 		<tr>
 			<td class="ra"><label for="height1">Current Height:</label></td>
-			<td><input type="text" id="height1" name="height1" style="width:35px;">
-			<input type="text" id="height2" name="height2" style="width:23px;">
+			<td><input type="text" id="height1" name="height1" class="box2">
+			<input type="text" id="height2" name="height2" class="box1">
 			<select name="hu" id="hu" onchange="updateHeight()">
 	  		<option value="0">ft in</option>
 	  		<option value="1">cm</option>
@@ -72,7 +83,7 @@
 				<table>
 					<tr>
 						<td class="ra"><label for="goalWeight">Goal Weight:</label></td>
-						<td><input type="text" id="goalWeight" name="goalWeight" style="width:35px;">
+						<td><input type="text" id="goalWeight" name="goalWeight" class="box2">
 						<select name="gwu" id="gwu">
 	  					<option value="0">lb</option>
 	  					<option value="1">kg</option>
@@ -80,11 +91,11 @@
 					</tr>
 					<tr>
 						<td class="ra"><label for="startDate">Start Date:</label></td>
-						<td><input type="date" id="startDate" name="startDate" style="width:170px;"></td>
+						<td><input type="date" id="startDate" name="startDate" class="dateBox"></td>
 					</tr>
 					<tr>
 						<td class="ra"><label for="endDate">End Date:</label></td>
-						<td><input type="date" id="endDate" name="endDate" style="width:170px;"></td>
+						<td><input type="date" id="endDate" name="endDate" class="dateBox"></td>
 					</tr>
 					<tr>
 						<td><span>Rate:</span></td>
@@ -94,13 +105,14 @@
 			</td>
 			<td>
 				<table>
+				    <tr><span>(Enter a negative number for weigh loss)</span></tr>
 					<tr>
 						<td><label for="rate">Rate:</label></td>
-						<td><input type="text" id="rate" name="rate" style="width:35px;">
+						<td><input type="text" id="rate" name="rate" class="box2">
 							<select name="ru" id="ru">
 	  						<option value="0">lb</option>
 	  						<option value="1">kg</option>
-							</select><span> per week (enter a negative number for weight loss).</span></td>
+							</select><span> per week</span></td>
 					</tr>
 				</table>
 			</td>
