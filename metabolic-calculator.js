@@ -55,7 +55,7 @@ function calcByGoal(){
 	var dw = gw - w;
 	var cr = dw/dt;
 
-	crE.innerHTML = cr,toFixed(2) + " lbs/week";
+	crE.innerHTML = cr.toFixed(2) + " lbs/week";
 	if (gw.value == '1')
 		crE.innerHTML = (cr / (2.20462)) + "kg/week";
 
@@ -65,7 +65,7 @@ function calcByGoal(){
 	else {
 	if (cals < 0)
 		alert("Your goal means you need to consume less than zero net calories per day.")
-	calsE.innerHTML = cals + "calories per day";
+	calsE.innerHTML = cals + " calories per day";
 	}
 
 }
