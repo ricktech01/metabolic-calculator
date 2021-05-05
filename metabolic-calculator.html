@@ -1,31 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css"></style>
+	<style type="text/css">
+		body{
+			font-size: 20px;
+		}
+		select {
+			font-size: 18px;
+		}
+		input {
+			font-size: 20px;
+		}
+		.ra {
+			float:right;
+		}
+		.c {
+			float:center;
+			padding-left: 10%;
+			padding-right: 10%;
+		}
+		.miniTable{
+			width:400px;
+		}
+	</style>
 </head>
 <body>
-	<label for="sex">Sex:</label>
-	<select name="sex" id="sex">
-	  	<option value="0">Male</option>
-	  	<option value="1">Female</option>
-	</select><br>
-	<label for="age">Age:</label>
-	<input type="text" id="age" name="age"><br>
-	<label for="weight">Current Weight:</label>
-	<input type="text" id="weight" name="weight">
-	<select name="wu" id="wu">
-	  	<option value="0">lb</option>
-	  	<option value="1">kg</option>
-	</select><br>
-	<label for="height1">Current Height:</label>
-	<input type="text" id="height1" name="height1">
-	<input type="text" id="height2" name="height2">
-	<select name="hu" id="hu" onchange="updateHeight()">
-	  	<option value="0">in</option>
-	  	<option value="1">cm</option>
-	</select><br>
-	<input type="button" value="Calculate" onclick="calculate()"><br>
-	<span>BMR (calories to maintain weight): <span id="bmr"></span> Calories/Day</span>
+	<table>
+		<tr>
+			<td class="ra"><label for="sex">Sex:</label></td>
+			<td><select name="sex" id="sex">
+	  		<option value="0">Male</option>
+	  		<option value="1">Female</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td class="ra"><label for="age">Age:</label></td>
+			<td><input type="text" id="age" name="age" style="width:23px;"></td>
+		</tr>
+		<tr>
+			<td class="ra"><label for="weight">Current Weight:</label></td>
+			<td><input type="text" id="weight" name="weight" style="width:35px;">
+			<select name="wu" id="wu">
+	  		<option value="0">lb</option>
+	  		<option value="1">kg</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td class="ra"><label for="height1">Current Height:</label></td>
+			<td><input type="text" id="height1" name="height1" style="width:35px;">
+			<input type="text" id="height2" name="height2" style="width:23px;">
+			<select name="hu" id="hu" onchange="updateHeight()">
+	  		<option value="0">ft/in</option>
+	  		<option value="1">cm</option>
+			</select></td>
+		</tr>
+	</table>
+	<input type="button" value="Calculate BMR" onclick="calcBMR()">
+	<span>BMR: </span>
+	<span id="bmr">XXXX</span> Calories/Day</span><br>
+	<br>
+	<table>
+		<tr>
+			<td class="c miniTable"><strong>Calculate By Goal</strong></td>
+			<td class="c miniTable"><strong>Calculate By Rate</strong></td >	
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td class="ra"><label for="goalWeight">Goal Weight:</label></td>
+						<td><input type="text" id="goalWeight" name="goalWeight" style="width:35px;">
+						<select name="gwu" id="gwu">
+	  					<option value="0">lb</option>
+	  					<option value="1">kg</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td class="ra"><label for="startDate">Start Date:</label></td>
+						<td><input type="date" id="startDate" name="startDate" style="width:170px;"></td>
+					</tr>
+					<tr>
+						<td class="ra"><label for="endDate">End Date:</label></td>
+						<td><input type="date" id="endDate" name="endDate" style="width:170px;"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td><label for="rate">Rate:</label></td>
+						<td><input type="text" id="rate" name="rate"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>	
+	</table>
+	
+	
+	
+
 
 	<script type="text/javascript" src="metabolic-calculator.js"></script>
 </body>

@@ -11,7 +11,7 @@ function updateHeight(){
 		h2E.style.visibility = "visible";
 	else h2E.style.visibility = "collapse";
 }
-function calculate(){
+function calcBMR(){
 	var w = parseFloat(weightE.value);
 	if (wuE.value == '0'){
 		w = parseFloat(weightE.value)/2.20462;
