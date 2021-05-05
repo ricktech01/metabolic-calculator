@@ -1,3 +1,4 @@
+//elements
 var sexE = document.getElementById("sex");
 var weightE = document.getElementById("weight");
 var wuE = document.getElementById("wu");
@@ -13,9 +14,20 @@ var sdE = document.getElementById("startDate");
 var edE = document.getElementById("endDate");
 var crE = document.getElementById("calculatedRate");
 
+var rE = document.getElementById("rate");
 
 var calsE = document.getElementById("cals");
+
+//vals
+var w = 0;
+var h = 0;
+var a = 0;
 var bmr = 0;
+
+var cr = 0;
+var bmr2 = 0;
+var gw = 0;
+var cals;
 
 function updateHeight(){
 	if (huE.value == '0')
@@ -23,17 +35,17 @@ function updateHeight(){
 	else h2E.style.visibility = "collapse";
 }
 function calcBMR(){
-	var w = parseFloat(weightE.value);
-	if (wuE.value == '0')
-		w = parseFloat(weightE.value)/2.20462;
-	var h = parseFloat(h1E.value);
+	w = parseFloat(weightE.value);
+	if (wuE.value == '1')
+		w = parseFloat(weightE.value)*2.20462;
+	h = parseFloat(h1E.value);
 	if (huE.value == '0')
 		h = (parseFloat(h1E.value)*12 + parseFloat(h2E.value))*2.54;
-	var a = parseInt(ageE.value);
+	a = parseInt(ageE.value);
 	
-	bmr = 88.362 + (13.397*w) + (4.799*h) - (5.677*a);
+	bmr = 88.362 + (13.397*w/2.20462) + (4.799*h) - (5.677*a);
 	if (sexE.value == '1'){
-		bmr = 447.593 + (9.247* w) + (3.098*h) - (4.330*a);
+		bmr = 447.593 + (9.247* w/2.20462) + (3.098*h) - (4.330*a);
 	}
 	if (isNaN(bmr))
 		alert("Please fill all required fields!")
@@ -41,34 +53,39 @@ function calcBMR(){
 }
 function calcByGoal(){
 	calcBMR();
-	var gw = parseFloat(gwE.value);
+	gw = parseFloat(gwE.value);
 	if (gwuE.value == '1')
 		gw = parseFloat(gwE.value)*2.20462;
 	var sd = new Date(sdE.value);
 	var ed = new Date(edE.value);
 	var dt = (ed - sd)/604800000 ;
-
-	var w = parseFloat(weightE.value);
-	if (wuE.value == '1')
-		w = parseFloat(weightE.value)*2.20462;
 	
 	var dw = gw - w;
-	var cr = dw/dt;
+	cr = dw/dt;
+
+	bmr2 = 88.362 + (13.397*gw/2.20462) + (4.799*h) - (5.677*a);
+	if (sexE.value == '1'){
+		bmr2 = 447.593 + (9.247* gw/2.20462) + (3.098*h) - (4.330*a);
+	}
 
 	crE.innerHTML = cr.toFixed(2) + " lbs/week";
 	if (gw.value == '1')
 		crE.innerHTML = (cr / (2.20462)) + "kg/week";
 
-	var cals = (bmr + cr*500).toFixed(2);
+	cals = ((bmr + bmr2)/2 + cr*500).toFixed(0);
 	if (isNaN(cals))
 		alert("Please fill all required fields!"); 
 	else {
 	if (cals < 0)
-		alert("Your goal means you need to consume less than zero net calories per day.")
+		alert("You will have to consume less than 0 net calories to achive your goal.")
 	calsE.innerHTML = cals + " calories per day";
 	}
 
 }
 function calcByRate(){
-
+	calcBMR();
+	cals = (bmr + rE.value*500).toFixed(0);
+	if (cals < 0)
+		alert("You will have to consume less than 0 net calories to achive your goal.")
+	calsE.innerHTML = cals + " calories per day";
 }
